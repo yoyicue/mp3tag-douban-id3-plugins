@@ -1,5 +1,5 @@
 # mp3tag-douban-id3-plugins v2.5
-十年前写过一个 Mp3tag 的[插件](https://www.appinn.com/mp3tag-douban-id3-plugins/)，最近装修打算放个数播，发觉十年过去了，PC上依然没有很好的方法更新id3，趁着豆瓣 API V2 还勉强能用，赶紧用，基于新的 Mp3tag [Web Sources Framework](https://help.mp3tag.de/main_online.html) 更新一个 JSON 插件版本。做了十年PM，这次好好写写文档很重要。
+十年前写过一个 [Mp3tag](https://www.mp3tag.de/en/download.html) 的[插件](https://www.appinn.com/mp3tag-douban-id3-plugins/)，最近装修打算放个数播，发觉十年过去了，PC上依然没有很好的方法更新id3，趁着豆瓣 API V2 还勉强能用，赶紧用，基于新的 Mp3tag [Web Sources Framework](https://help.mp3tag.de/main_online.html) 更新一个 JSON 插件版本。做了十年PM，这次好好写写文档很重要。
 
 
 
