@@ -1,0 +1,183 @@
+﻿# Mp3tag Tag Source for Douban Music API V2.5 （yoyicue）
+#
+# Search by ALBUM
+#
+# This file needs to be stored in Mp3tag's tag sources directory. 
+# %APPDATA%\Mp3tag\data\sources
+#
+# #####################################################################
+#
+#
+[Name]=Douban Music
+[BasedOn]=https://api.douban.com/
+[IndexUrl]=https://api.douban.com/v2/music/search?count=100&start=0&q=
+[AlbumUrl]=
+[WordSeperator]=+
+[IndexFormat]=%_url%|%_preview%|%Rating%|%Album%|%Artist%|%Year%|%Version%|%Format%|%Publisher%
+[SearchBy]=Album||$regexp(%album%,'[+!(){}\[\]^"~*?:\\]',)||%s
+[UserAgent]=1
+[Encoding]=url-utf-8
+#
+[ParserScriptIndex]=...
+# ###################################################################
+#         I  N  D  E  X
+# ###################################################################
+
+replace "|" "$verticalBar()"
+json "ON" "current"
+
+# First, check if we've found anything
+json_select "total"
+
+# Then iterate over all releases
+ifnot "0"
+
+  json_foreach "musics"
+
+    # URL
+    say "https://api.douban.com/v2/music/"
+    json_select "id"
+    sayrest
+    say "|"
+
+    # Preview
+    json_select "alt"
+    sayrest
+    say "|"  
+
+    # Rating
+    json_select_object "rating"
+    json_select "average"
+    sayrest
+    say "|"
+
+    json_unselect_object
+
+    # Album
+    json_select "title"
+    sayrest
+    say "|"
+  
+    # Artist
+    json_select_many "author" "name" ","
+    sayrest
+    say "|" 
+
+    # Year
+    json_select_object "attrs"
+    json_select_object "pubdate"
+    json_select_array "pubdate" 1
+    saynchars 4
+    say "|"
+
+    # Version
+    json_select_object "version"
+    json_select_array "version" 1
+    sayrest
+    say "|"
+
+    # Format
+    json_select_object "media"
+    json_select_array "media" 1
+    sayrest
+    say "|"
+
+    # Publisher
+    json_select_object "publisher"
+    json_select_array "publisher" 1
+    sayrest
+
+    json_unselect_object
+
+    saynewline
+
+  json_foreach_end
+
+endif
+
+
+[ParserScriptAlbum]=...
+# ###################################################################
+#         A  L  B  U  M
+# ###################################################################
+
+replace "|" "$verticalBar()"
+json "ON" "current"
+
+# Album
+outputto "ALBUM"
+json_select "title"
+sayrest
+
+# Artist
+outputto "Artist"
+json_select_many "author" "name" ","
+sayrest
+
+# Publisher
+outputto "PUBLISHER"
+json_select_object "attrs"
+json_select_object "publisher"
+json_select_array "publisher" 1
+sayrest
+
+json_unselect_object
+
+# Douban_ID
+outputto "Douban_ID"
+json_select "id"
+sayrest
+
+# Douban_Rate
+outputto "Douban_Rate"
+json_select_object "rating"
+json_select "average"
+sayrest
+json_unselect_object
+
+# Www
+outputto "WWW"
+json_select "alt"
+sayrest
+
+# Coverurl
+outputto "Coverurl"
+json_select "image"
+replace "/s/" "/l/"
+sayrest
+
+# Year
+outputto "Year"
+json_select_object "attrs"
+json_select_object "pubdate"
+json_select_array "pubdate" 1
+saynchars 4
+json_unselect_object
+
+# Format
+outputto "MEDIATYPE"
+json_select_object "attrs"
+json_select_object "media"
+json_select_array "media" 1
+sayrest
+json_unselect_object
+
+# Comment
+outputto "Comment"
+json_foreach "tags"
+  json_select "name"
+  sayrest
+  say ","
+json_foreach_end
+sayrest
+
+# Tracks
+outputto "Tracks"
+json_select_object "attrs"
+json_select_object "tracks"
+json_select_array "tracks" 1
+regexpreplace "\\n" "|"
+regexpreplace "^[0-1]{1,2}(.( *)|( *)|.)" ""
+regexpreplace "\|[0-9]{1,2}(.( *)|( *)|.)" "|"
+sayrest
+json_unselect_object
