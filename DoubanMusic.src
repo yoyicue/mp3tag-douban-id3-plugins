@@ -176,6 +176,7 @@ outputto "Tracks"
 json_select_object "attrs"
 json_select_object "tracks"
 json_select_array "tracks" 1
+regexpreplace "(•( *)|•)" ""
 regexpreplace "\\n" "|"
 regexpreplace "^[0-1]{1,2}(.( *)|( *)|.)" ""
 regexpreplace "\|[0-9]{1,2}(.( *)|( *)|.)" "|"
