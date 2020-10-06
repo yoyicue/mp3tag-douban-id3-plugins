@@ -57,9 +57,9 @@
 
 
 
-感谢小众软件和青蛙，基于对自己的判断，虽然是一个很小的脚本，但是依然不能保证有资源迭代。见谅。
+感谢小众软件和青蛙 @scavin，基于对自己的判断，虽然是一个很小的脚本，但是依然不能保证有资源迭代。见谅。
 
 #### 历史版本和链接
-https://code.google.com/archive/p/cunfe/
-https://www.appinn.com/mp3tag-douban-id3-plugins/
-https://www.douban.com/group/topic/5183124/ （我把cunfe注销了）
+- https://code.google.com/archive/p/cunfe/
+- https://www.appinn.com/mp3tag-douban-id3-plugins/
+- https://www.douban.com/group/topic/5183124/ （ID已注销）
