@@ -13,7 +13,7 @@
 - 支持豆瓣音乐CDN封面Large大图
 - 调整标签附加了豆瓣评分、豆瓣链接，豆瓣ID
 - 注释保留了豆瓣音乐的Tags拼接
-- 支持有序，无序是否含空格的音轨顺序和名称
+- 支持有序，无序标点的音轨顺序和去空格名称
 
 
 
@@ -27,7 +27,7 @@
 
 #### 安装方法
 
-找到 `%appdata%\mp3tag\data\sources` 位置，下载[release](https://github.com/yoyicue/mp3tag-douban-id3-plugins/releases) 版本或者把最新的 [DoubanMusic.src](https://raw.githubusercontent.com/yoyicue/mp3tag-douban-id3-plugins/main/DoubanMusic.src) 直接粘贴在这个目录下，重启 Mp3tag 即可
+找到 `%appdata%\mp3tag\data\sources` 位置，下载 [release](https://github.com/yoyicue/mp3tag-douban-id3-plugins/releases) 版本或者把最新的 [DoubanMusic.src](https://raw.githubusercontent.com/yoyicue/mp3tag-douban-id3-plugins/main/DoubanMusic.src) 直接粘贴在这个目录下，重启 Mp3tag 即可
 
 
 
